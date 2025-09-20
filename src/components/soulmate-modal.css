@@ -1,0 +1,175 @@
+
+/* Backdrop */
+.sm-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(1200px 800px at 50% 35%, rgba(255, 170, 255, 0.18), rgba(0,0,0,0.65)),
+              linear-gradient(180deg, rgba(15, 0, 25, 0.4), rgba(0, 0, 0, 0.7));
+  backdrop-filter: blur(3px);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Winner pics layer */
+.sm-confetti-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sm-float-pic {
+  position: absolute;
+  top: var(--sm-top);
+  left: var(--sm-left);
+  width: var(--sm-size);
+  height: var(--sm-size);
+  object-fit: cover;
+  border-radius: 10px;
+  transform: translate(-50%, -50%) rotate(var(--sm-rotate)) scale(0.6);
+  opacity: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  animation: sm-pop 450ms ease-out var(--sm-delay) forwards,
+             sm-drift 4s ease-in var(--sm-delay) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes sm-pop {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.6) rotate(var(--sm-rotate)); }
+  60%  { opacity: 1; transform: translate(-50%, -50%) scale(1.05) rotate(var(--sm-rotate)); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.0) rotate(var(--sm-rotate)); }
+}
+
+@keyframes sm-drift {
+  0%   { transform: translate(-50%, -50%) translateY(0) rotate(var(--sm-rotate)); opacity: 1; }
+  100% { transform: translate(-50%, calc(-50% - 140px)) rotate(calc(var(--sm-rotate) + 8deg)); opacity: 0; }
+}
+
+/* Modal card with animated glow + gradient “neon” border */
+.sm-modal {
+  position: relative;
+  width: min(720px, 92vw);
+  background: rgba(22, 12, 28, 0.9);
+  color: #fff;
+  border-radius: 18px;
+  padding: 20px 20px 16px;
+  box-shadow:
+    0 2px 30px rgba(255, 105, 180, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  overflow: hidden;
+}
+
+/* animated border ring */
+.sm-modal::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: conic-gradient(
+    from 0deg,
+    #ff8ad4,
+    #b388ff,
+    #7ec8ff,
+    #ffb86c,
+    #ff8ad4
+  );
+  filter: blur(10px);
+  opacity: 0.75;
+  z-index: -1;
+  animation: sm-spin 6s linear infinite;
+}
+
+@keyframes sm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* soft pulsing glow */
+.sm-modal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 120px 40px rgba(255, 140, 220, 0.08) inset;
+  animation: sm-pulse 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sm-pulse {
+  0%, 100% { box-shadow: 0 0 120px 40px rgba(255, 140, 220, 0.08) inset; }
+  50%      { box-shadow: 0 0 160px 60px rgba(255, 200, 255, 0.12) inset; }
+}
+
+/* content bits */
+.sm-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border: 0;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+}
+.sm-close:hover { transform: scale(1.06); background: rgba(255, 255, 255, 0.12); }
+
+.sm-title {
+  font-weight: 800;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sm-emoji { filter: drop-shadow(0 2px 6px rgba(255, 136, 200, 0.6)); }
+
+.sm-headline {
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sm-chip {
+  background: linear-gradient(90deg, #ff8ad4, #b388ff);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sm-content {
+  margin-top: 16px;
+}
+
+.sm-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sm-btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #ffffff;
+  color: #2b1036;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 8px 22px rgba(255, 120, 200, 0.18);
+}
+.sm-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(255, 120, 200, 0.26);
+}

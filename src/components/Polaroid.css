@@ -1,0 +1,48 @@
+.polaroid {
+  background: white;
+  padding: 10px 10px 25px; 
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: inline-block;
+  transition: box-shadow 0.2s ease; 
+  perspective: 1000px;
+  will-change: transform;
+
+}
+
+
+.polaroid img {
+  max-width: 160px; 
+  border-radius: 2px;
+  display: block;
+}
+
+.polaroid p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #333;
+  margin: 6px 0 0;
+  text-align: center;
+}
+
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg) scale(1.05); }
+  25% { transform: rotate(2deg) scale(1.08); }
+  50% { transform: rotate(-2deg) scale(1.08); }
+  75% { transform: rotate(1deg) scale(1.06); }
+  100% { transform: rotate(0deg) scale(1.05); }
+}
+
+
+
+
+.polaroid:hover {
+  z-index: 5;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); 
+    animation: wiggle 0.4s ease;
+
+
+}
+
+

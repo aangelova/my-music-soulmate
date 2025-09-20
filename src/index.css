@@ -1,0 +1,77 @@
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f9a8d4, #c084fc, #60a5fa);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* all content container */
+.container {
+  display: flex;
+  flex-direction: column;   
+  align-items: center;     
+  justify-content: center;  
+  height: 100vh;            
+  text-align: center;
+  gap: 20px;               
+
+  max-width: 600px;         
+  margin: 0 auto;           
+  padding: 0 20px;          
+}
+
+/* title */
+h1 {
+  font-family: 'Rubik Distressed', sans-serif;
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* description */
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* login */
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; 
+  padding: 10px 24px;
+  border: none;
+  border-radius: 50px;
+  background: #1DB954;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+
+@keyframes pulse {
+  0%   { transform: scale(1) rotate(var(--rotation, 0deg)); }
+  50%  { transform: scale(1.15) rotate(var(--rotation, 0deg)); }
+  100% { transform: scale(1) rotate(var(--rotation, 0deg)); }
+}
+
+.heart {
+  animation: pulse 2s ease-in-out infinite;
+}
